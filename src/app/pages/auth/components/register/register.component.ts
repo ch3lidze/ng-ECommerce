@@ -1,5 +1,7 @@
+import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +19,9 @@ export class RegisterComponent implements OnInit{
   });
   
 
-  constructor(){}
+  constructor(
+    private authService: AuthService
+  ){}
 
   
 
@@ -28,6 +32,11 @@ export class RegisterComponent implements OnInit{
   submit(){
     this.form.markAllAsTouched()
     if(this.form.invalid) return
+
+    console.log(this.form.value);
     
+    this.authService.register(this.form.value).subscribe(res => {
+      console.log(res);
+    })
   }
 }
