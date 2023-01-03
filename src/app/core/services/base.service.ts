@@ -15,4 +15,7 @@ export class BaseService {
       return this.http.post<T>(this.apiUrl + url, body)
   }
 
+  get<T>(url: string, params?: any){
+    return this.http.get<T>(this.apiUrl + url, {params})
+  }
 }
