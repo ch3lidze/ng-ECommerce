@@ -19,3 +19,4 @@ export class BaseService {
     return this.http.get<T>(this.apiUrl + url, {params})
   }
 }
+ 

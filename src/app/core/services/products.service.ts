@@ -15,5 +15,5 @@ export class ProductsService extends BaseService{
   }): Observable<Product[]> {
     return this.get<Product[]>('product', params)
   }
-  
+   
 }

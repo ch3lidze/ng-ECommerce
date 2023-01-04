@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/core/services';
+import { Observable } from 'rxjs';
+import { AuthService, CartService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,11 @@ import { AuthService } from 'src/app/core/services';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  cartCount: Observable<number> = this.cartService.cartCount
+
+  
+
+
   get userIsAuthenticated(){
     return this.authservice.token
   }
@@ -15,7 +21,8 @@ export class HeaderComponent {
   }
 
     constructor(
-      private authservice: AuthService
+      private authservice: AuthService,
+      private cartService: CartService
     ){}
 
     signOut(){
